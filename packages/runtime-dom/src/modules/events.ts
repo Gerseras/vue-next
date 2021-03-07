@@ -110,7 +110,7 @@ function createInvoker(
     // the solution is simple: we save the timestamp when a handler is attached,
     // and the handler would only fire if the event passed to it was fired
     // AFTER it was attached.
-    const timeStamp = e.timeStamp || _getNow()
+    const timeStamp = _getNow()
     if (timeStamp >= invoker.attached - 1) {
       callWithAsyncErrorHandling(
         patchStopImmediatePropagation(e, invoker.value),
